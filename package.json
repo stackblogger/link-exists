@@ -1,6 +1,6 @@
 {
   "name": "link-exists",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Read and Parse Parent Package Json file in TypeScript.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

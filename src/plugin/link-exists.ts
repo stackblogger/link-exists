@@ -1,5 +1,5 @@
 import http from 'http';
-import { reformUrl } from './util';
+import { isValidUrl, reformUrl } from './util';
 
 /**
  * Check whether a link exists or not.
@@ -11,10 +11,12 @@ export async function linkExists(link: string): Promise<boolean> {
   if (typeof link !== 'string') {
     throw new TypeError(`Expected a string, got ${typeof link}`);
   }
-  const valid = reformUrl(link);
-  if (!valid) return false;
+  const isItValid = isValidUrl(link);
+  if (typeof isItValid === 'boolean' && isItValid === false) return false;
+  const reformedUrl = reformUrl(link);
+  if (!reformedUrl) return false;
 
-  const { host, pathname } = valid;
+  const { host, pathname } = reformedUrl;
   const opt = { method: 'HEAD', host, path: pathname };
 
   return new Promise((resolve) => {

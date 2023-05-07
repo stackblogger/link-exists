@@ -1,5 +1,5 @@
 import { linkExists } from '../src';
-import { reformUrl } from '../src/plugin/util';
+import { isValidUrl, reformUrl } from '../src/plugin/util';
 
 describe('LinkExists', () => {
   it('should exist', async () => {
@@ -20,5 +20,10 @@ describe('LinkExists', () => {
   it('should not reform url', async () => {
     const result = reformUrl('bookmymark.com');
     expect(result).toBe(null);
+  });
+
+  it('should not be a valid url', async () => {
+    const result = isValidUrl('some test url .com');
+    expect(result).toBe(false);
   });
 });
