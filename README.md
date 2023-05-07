@@ -3,7 +3,7 @@
 
 # link-exists
 
-A simple JavaScript / TypeScript library to detect bad words. Use it with your custom list of bad words.
+A simple JavaScript / TypeScript library to check whether a given url is valid and exists or not.
 
 ## Installation
 
