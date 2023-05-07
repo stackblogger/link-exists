@@ -1,7 +1,7 @@
 {
   "name": "link-exists",
   "version": "1.1.0",
-  "description": "Read and Parse Parent Package Json file in TypeScript.",
+  "description": "Checks whether a given link exists.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -22,18 +22,10 @@
     "url": "https://github.com/stackblogger/link-exists.git"
   },
   "keywords": [
-    "badwords",
-    "bad-words",
-    "typescript",
-    "javascript",
-    "adult",
-    "remove",
-    "search",
-    "finder",
-    "find",
-    "xxx",
-    "pornographic",
-    "nfsw"
+    "link-exists",
+	"url-exist",
+	"url-validator",
+	"link-validator"
   ],
   "author": {
     "name": "StackBlogger (Jameer Khan)",
