@@ -20,7 +20,7 @@ export async function linkExists(link: string): Promise<boolean> {
   const opt = { method: 'HEAD', host, path: pathname };
 
   return new Promise((resolve) => {
-    const req = http.request(opt, (r) => resolve(/4\d\d/.test(`${r.statusCode}`) === false));
+    const req = http.request(opt, () => resolve(true));
 
     req.on('error', () => resolve(false));
     req.end();
