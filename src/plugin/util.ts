@@ -1,20 +1,30 @@
+import { REGEX_PREPEND_PROTOCOL, REGEX_VALID_URL } from './constants';
+
 /**
  * Format a string url with URL class
  *
  * @param url url to be reformed
+ * @param includeProtocol validate url with or without protocol
  * @returns {URL | null} URL formatted object
  */
-export function reformUrl(url: string): URL | null {
+export function reformUrl(url: string, includeProtocol?: boolean): URL | null {
   try {
-    return new URL(url.trim());
+    let localUrl = url;
+    if (typeof includeProtocol === 'boolean' && includeProtocol === true) {
+      localUrl = !REGEX_PREPEND_PROTOCOL.test(localUrl) ? `http://${localUrl}` : localUrl;
+    }
+    return new URL(localUrl.trim());
   } catch (_e) {
     return null;
   }
 }
 
-const REGEX_VALID_URL =
-  /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
-
+/**
+ * validates a url using javascript regex
+ *
+ * @param url url to validate
+ * @returns true / false whether a given url is valid
+ */
 export function isValidUrl(url: string): boolean {
   return url.match(REGEX_VALID_URL) !== null;
 }

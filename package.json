@@ -1,7 +1,7 @@
 {
   "name": "link-exists",
-  "version": "1.2.1",
-  "description": "Checks whether a given link exists.",
+  "version": "1.2.2",
+  "description": "A super lightweight JavaScript / TypeScript library to check whether a given url is valid and exists or not.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -23,9 +23,14 @@
   },
   "keywords": [
     "link-exists",
-	"url-exist",
-	"url-validator",
-	"link-validator"
+    "url-exist",
+    "url-validator",
+    "link-validator",
+    "link-check",
+    "validator",
+    "verify",
+    "node.js",
+    "typescript"
   ],
   "author": {
     "name": "StackBlogger (Jameer Khan)",
@@ -36,7 +41,7 @@
   "bugs": {
     "url": "https://github.com/stackblogger/link-exists/issues"
   },
-  "homepage": "https://github.com/stackblogger/link-exists#readme",
+  "homepage": "https://stackblogger.com",
   "devDependencies": {
     "@types/jest": "^28.1.6",
     "@types/node": "^18.15.11",
@@ -53,7 +58,12 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "branches": 95
+      }
+    }
   },
   "engines": {
     "node": ">= 16.0.0"
