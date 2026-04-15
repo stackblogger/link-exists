@@ -20,5 +20,5 @@ module.exports = {
     'operator-linebreak': 0,
     'no-useless-escape': 0
   },
-  ignorePatterns: ['dist', 'node_modules', '.eslintrc.js', 'rollup.config.js', '__tests__', 'coverage']
+  ignorePatterns: ['dist', 'node_modules', '.eslintrc.js', 'rollup.config.js', '__tests__', 'coverage', 'scripts']
 };
