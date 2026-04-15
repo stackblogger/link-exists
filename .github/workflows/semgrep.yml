@@ -1,0 +1,27 @@
+name: Semgrep
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  semgrep:
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    if: (github.actor != 'dependabot[bot]')
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: >
+          semgrep ci
+          --no-suppress-errors
+          --config p/typescript
+          --config p/owasp-top-ten
+          --config p/security-audit
+          --config p/secrets
