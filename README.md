@@ -24,7 +24,11 @@ A super lightweight library to validate if a given url is valid or not. Some add
 - Jest test cases with <b>100% coverage</b>
 - Promise based result
 
-## Usage (TypeScript)
+## Usage
+
+**[Full documentation](https://opensource.stackblogger.com/link-exists/)** — API, config options, behavior notes, and more examples.
+
+### TypeScript
 
 ```typescript
 import { linkExists } from 'link-exists';
@@ -57,7 +61,7 @@ await linkExists('https://example.com', { details: true, timeout: 8000, method: 
 // response: { exists: true, status: 200, url: 'https://example.com/' }
 ```
 
-## Usage (JavaScript)
+### JavaScript
 
 ```javascript
 const { linkExists } = require('link-exists');
