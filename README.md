@@ -29,22 +29,26 @@ A super lightweight library to validate if a given url is valid or not. Some add
 ```typescript
 import { linkExists } from 'link-exists';
 
-const result = await linkExists('https://stackblogger.com');
-console.log(result);
-// OUTPUT true
+await linkExists('https://stackblogger.com'); // true when any HTTP answer comes back
+// response: true
 
-const result = await linkExists('https://some-invalid-url.com');
-console.log(result);
-// OUTPUT false
+await linkExists('https://example.com', { details: true }); // object, exists follows ok status
+// response: { exists: true, status: 200, url: 'https://example.com/' }
 
-const result = await linkExists('stackblogger.com');
-console.log(result);
-// OUTPUT false
+await linkExists('stackblogger.com', { ignoreProtocol: true }); // allow link with no protocol
+// response: true
 
-// Configuration
-const result = await linkExists('stackblogger.com', { ignoreProtocol: true });
-console.log(result);
-// OUTPUT true
+await linkExists('https://example.com', { timeout: 5000 }); // stop after 5 seconds
+// response: true (or false on timeout / error)
+
+await linkExists('https://example.com', { method: 'GET' }); // use GET not HEAD
+// response: true
+
+await linkExists('https://example.com', { fallbackToGet: false }); // no GET retry after HEAD
+// response: true
+
+await linkExists('https://example.com', { details: true, timeout: 8000, method: 'HEAD' }); // mix of options
+// response: { exists: true, status: 200, url: 'https://example.com/' }
 ```
 
 ## Usage (JavaScript)
@@ -52,22 +56,26 @@ console.log(result);
 ```javascript
 const { linkExists } = require('link-exists');
 
-const result = await linkExists('https://stackblogger.com');
-console.log(result);
-// OUTPUT true
+await linkExists('https://stackblogger.com'); // true when any HTTP answer comes back
+// response: true
 
-const result = await linkExists('https://some-invalid-url.com');
-console.log(result);
-// OUTPUT false
+await linkExists('https://example.com', { details: true }); // object, exists follows ok status
+// response: { exists: true, status: 200, url: 'https://example.com/' }
 
-const result = await linkExists('stackblogger.com');
-console.log(result);
-// OUTPUT false
+await linkExists('stackblogger.com', { ignoreProtocol: true }); // allow link with no protocol
+// response: true
 
-// Configuration
-const result = await linkExists('stackblogger.com', { ignoreProtocol: true });
-console.log(result);
-// OUTPUT true
+await linkExists('https://example.com', { timeout: 5000 }); // stop after 5 seconds
+// response: true (or false on timeout / error)
+
+await linkExists('https://example.com', { method: 'GET' }); // use GET not HEAD
+// response: true
+
+await linkExists('https://example.com', { fallbackToGet: false }); // no GET retry after HEAD
+// response: true
+
+await linkExists('https://example.com', { details: true, timeout: 8000, method: 'HEAD' }); // mix of options
+// response: { exists: true, status: 200, url: 'https://example.com/' }
 ```
 
 ### License
