@@ -231,7 +231,25 @@ console.log(ok);</code></pre>
       <pre class="cli"><span class="p">$</span> <span class="c">node dist/app.js</span>
 <span class="o">true</span></pre>
 
-      <h3>No protocol in the string</h3>
+      <p class="muted">Host-only or <code>www.</code> strings with no <code>http://</code> or <code>https://</code> return <code>false</code> by default. Use a full URL or set <code>ignoreProtocol: true</code> so <code>http://</code> is added.</p>
+
+      <h3>Host or www without a scheme (default)</h3>
+      <pre class="code"><code>import { linkExists } from 'link-exists';
+
+const ok = await linkExists('www.stackblogger.com');
+console.log(ok);</code></pre>
+      <pre class="cli"><span class="p">$</span> <span class="c">node dist/app.js</span>
+<span class="o">false</span></pre>
+
+      <h3>Same host with <code>ignoreProtocol</code></h3>
+      <pre class="code"><code>import { linkExists } from 'link-exists';
+
+const ok = await linkExists('www.stackblogger.com', { ignoreProtocol: true });
+console.log(ok);</code></pre>
+      <pre class="cli"><span class="p">$</span> <span class="c">node dist/app.js</span>
+<span class="o">true</span></pre>
+
+      <h3>Bare domain with <code>ignoreProtocol</code></h3>
       <pre class="code"><code>const ok = await linkExists('example.com', { ignoreProtocol: true });
 console.log(ok);</code></pre>
       <pre class="cli"><span class="p">$</span> <span class="c">node dist/app.js</span>
@@ -247,6 +265,24 @@ console.log(ok);</code></pre>
 (async () => {
   const ok = await linkExists('https://example.com');
   console.log(ok);
+})();</code></pre>
+      <pre class="cli"><span class="p">$</span> <span class="c">node app.cjs</span>
+<span class="o">true</span></pre>
+
+      <p class="muted">Host-only or <code>www.</code> without a scheme returns <code>false</code> unless you pass <code>ignoreProtocol: true</code> or use a full URL.</p>
+
+      <h3>Host or www without a scheme (default)</h3>
+      <pre class="code"><code>const { linkExists } = require('link-exists');
+(async () => {
+  console.log(await linkExists('www.stackblogger.com'));
+})();</code></pre>
+      <pre class="cli"><span class="p">$</span> <span class="c">node app.cjs</span>
+<span class="o">false</span></pre>
+
+      <h3>Same host with <code>ignoreProtocol</code></h3>
+      <pre class="code"><code>const { linkExists } = require('link-exists');
+(async () => {
+  console.log(await linkExists('www.stackblogger.com', { ignoreProtocol: true }));
 })();</code></pre>
       <pre class="cli"><span class="p">$</span> <span class="c">node app.cjs</span>
 <span class="o">true</span></pre>
