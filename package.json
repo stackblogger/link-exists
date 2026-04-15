@@ -1,13 +1,12 @@
 {
   "name": "link-exists",
-  "version": "1.2.2",
+  "version": "2.0.1",
   "description": "A super lightweight JavaScript / TypeScript library to check whether a given url is valid and exists or not.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
-    "__tests__",
     "readme.md",
     "postinstall.js"
   ],
@@ -44,7 +43,7 @@
   "bugs": {
     "url": "https://github.com/stackblogger/link-exists/issues"
   },
-  "homepage": "https://stackblogger.com",
+  "homepage": "https://opensource.stackblogger.com/link-exists",
   "devDependencies": {
     "@types/jest": "^28.1.6",
     "@types/node": "^18.15.11",
