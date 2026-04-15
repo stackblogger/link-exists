@@ -1,7 +1,5 @@
-![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/stackblogger/link-exists/master.yml?style=flat-square&logo=github&color=success)
 ![npm](https://img.shields.io/npm/v/link-exists?style=flat-square&color=success&logo=npm)
-![npm](https://img.shields.io/npm/dw/link-exists?style=flat-square&color=success&logo=npm)
-![npm bundle size](https://img.shields.io/bundlephobia/min/link-exists?style=flat-square&logo=npm)
+![npm](https://img.shields.io/npm/dm/link-exists?style=flat-square&color=success&logo=npm)
 ![GitHub](https://img.shields.io/github/license/stackblogger/link-exists?style=flat-square&logo=github&color=success)
 
 # link-exists
