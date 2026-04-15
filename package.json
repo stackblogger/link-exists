@@ -8,9 +8,11 @@
   "files": [
     "dist",
     "__tests__",
-    "readme.md"
+    "readme.md",
+    "postinstall.js"
   ],
   "scripts": {
+    "postinstall": "node postinstall.js",
     "test": "jest --coverage",
     "build": "rollup --config",
     "lint": "eslint .",
