@@ -24,12 +24,22 @@ A super lightweight library to validate if a given url is valid or not. Some add
 - Jest test cases with <b>100% coverage</b>
 - Promise based result
 
+## Host without `http://` or `https://`
+
+Strings like `www.stackblogger.com` or `example.com` return **`false`** by default (no protocol). Use a full URL (`https://www.stackblogger.com`) **or** pass `{ ignoreProtocol: true }` so `http://` is added for you.
+
 ## Usage (TypeScript)
 
 ```typescript
 import { linkExists } from 'link-exists';
 
 await linkExists('https://stackblogger.com'); // true when any HTTP answer comes back
+// response: true
+
+await linkExists('www.stackblogger.com'); // false: no protocol in the string by default
+// response: false
+
+await linkExists('www.stackblogger.com', { ignoreProtocol: true }); // same host, protocol added
 // response: true
 
 await linkExists('https://example.com', { details: true }); // object, exists follows ok status
@@ -57,6 +67,12 @@ await linkExists('https://example.com', { details: true, timeout: 8000, method: 
 const { linkExists } = require('link-exists');
 
 await linkExists('https://stackblogger.com'); // true when any HTTP answer comes back
+// response: true
+
+await linkExists('www.stackblogger.com'); // false: no protocol in the string by default
+// response: false
+
+await linkExists('www.stackblogger.com', { ignoreProtocol: true }); // same host, protocol added
 // response: true
 
 await linkExists('https://example.com', { details: true }); // object, exists follows ok status
