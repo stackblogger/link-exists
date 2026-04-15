@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>link-exists — docs</title>
+  <meta name="description" content="Lightweight URL reachability check for Node.js. API reference and examples.">
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --muted: #5c5c5c;
+      --border: #e5e5e5;
+      --accent: #0d6efd;
+      --code-bg: #f0f0f0;
+      --cli-bg: #0f1419;
+      --cli-dim: #6c7086;
+      --cli-cmd: #89b4fa;
+      --cli-out: #a6e3a1;
+      --cli-err: #f38ba8;
+      --radius: 8px;
+      --max: 54rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --text: #ececec;
+        --muted: #a3a3a3;
+        --border: #2a2a2a;
+        --accent: #6ea8fe;
+        --code-bg: #1e1e1e;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--text);
+      background: var(--bg);
+    }
+    main { max-width: var(--max); margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+    header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 1.75rem; font-weight: 700; margin: 0 0 0.35rem; letter-spacing: -0.02em; }
+    .badges { margin: 0.75rem 0 0.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.65rem; }
+    .badges a { line-height: 0; }
+    .badges img { display: block; height: 20px; width: auto; }
+    .extlinks { margin: 0.35rem 0 0; font-size: 0.9rem; }
+    .tag { color: var(--muted); font-size: 0.95rem; margin: 0.5rem 0 0; }
+    h2 { font-size: 1.15rem; margin: 2rem 0 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border); }
+    h2:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+    h3 { font-size: 1rem; margin: 1.25rem 0 0.5rem; }
+    p, li { color: var(--text); }
+    .muted { color: var(--muted); font-size: 0.9rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav ul { margin: 0.5rem 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; font-size: 0.9rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 0.75rem 0; }
+    th, td { text-align: left; padding: 0.45rem 0.6rem; border: 1px solid var(--border); vertical-align: top; }
+    th { background: var(--code-bg); font-weight: 600; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em; background: var(--code-bg); padding: 0.12em 0.35em; border-radius: 4px; }
+    pre.code {
+      margin: 0.6rem 0;
+      padding: 1rem 1.1rem;
+      background: var(--code-bg);
+      border-radius: var(--radius);
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.8rem;
+      line-height: 1.45;
+      border: 1px solid var(--border);
+    }
+    pre.code code { background: none; padding: 0; font-size: inherit; }
+    pre.cli {
+      margin: 0.6rem 0 1.25rem;
+      padding: 1rem 1.1rem;
+      background: var(--cli-bg);
+      color: #cdd6f4;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    pre.cli .p { color: var(--cli-dim); user-select: none; }
+    pre.cli .c { color: var(--cli-cmd); }
+    pre.cli .o { color: var(--cli-out); }
+    pre.cli .e { color: var(--cli-err); }
+    footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>link-exists</h1>
+      <p class="badges">
+        <a href="https://www.npmjs.com/package/link-exists" title="npm package — link-exists"><img src="https://img.shields.io/npm/dm/link-exists?style=flat-square&amp;label=npm%20downloads" alt="npm downloads per month" loading="lazy"></a>
+        <a href="https://github.com/stackblogger/link-exists/stargazers" title="GitHub stars"><img src="https://img.shields.io/github/stars/stackblogger/link-exists?style=flat-square&amp;logo=github&amp;label=stars" alt="GitHub stars" loading="lazy"></a>
+      </p>
+      <p class="extlinks">
+        <a href="https://github.com/stackblogger/link-exists">GitHub repository</a>
+        ·
+        <a href="https://www.npmjs.com/package/link-exists">npm package</a>
+      </p>
+      <p class="tag">A super lightweight JavaScript / TypeScript library to check whether a given url is valid and exists or not.</p>
+      <nav aria-label="On this page">
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#api">API</a></li>
+          <li><a href="#config">Config</a></li>
+          <li><a href="#returns">Return values</a></li>
+          <li><a href="#behavior">Behavior</a></li>
+          <li><a href="#examples-ts">TypeScript</a></li>
+          <li><a href="#examples-js">JavaScript</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="install">
+      <h2>Install</h2>
+      <pre class="code"><code>npm install link-exists</code></pre>
+      <p class="muted">Requires <strong>Node.js 18</strong> or newer (<code>fetch</code> and <code>AbortController</code>).</p>
+    </section>
+
+    <section id="api">
+      <h2>API</h2>
+      <pre class="code"><code>linkExists(link: string, config?: LinkValidatorConfig): Promise&lt;boolean | LinkCheckResult&gt;</code></pre>
+      <ul>
+        <li><code>link</code> — URL string to check.</li>
+        <li><code>config</code> — optional object; all fields are optional.</li>
+      </ul>
+      <p>Throws <code>TypeError</code> only if <code>link</code> is not a string or a config field has the wrong type. Network problems return <code>false</code> (or a failure object when <code>details: true</code>).</p>
+    </section>
+
+    <section id="config">
+      <h2>Config options</h2>
+      <table>
+        <thead>
+          <tr><th>Field</th><th>Type</th><th>Default</th><th>What it does</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>ignoreProtocol</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>If <code>true</code>, links without <code>http://</code> or <code>https://</code> are still checked (protocol is added).</td>
+          </tr>
+          <tr>
+            <td><code>timeout</code></td>
+            <td><code>number</code> (ms)</td>
+            <td>none</td>
+            <td>Stops the request after this many milliseconds. <code>0</code> or omitted means no timeout.</td>
+          </tr>
+          <tr>
+            <td><code>method</code></td>
+            <td><code>'HEAD'</code> | <code>'GET'</code></td>
+            <td><code>'HEAD'</code></td>
+            <td>HTTP method for the first request. With default <code>HEAD</code>, a failed HEAD can fall back to <code>GET</code> unless you turn that off.</td>
+          </tr>
+          <tr>
+            <td><code>fallbackToGet</code></td>
+            <td><code>boolean</code></td>
+            <td><code>true</code></td>
+            <td>When using HEAD first, retry with GET if HEAD fails (network error). Set <code>false</code> to skip the GET retry.</td>
+          </tr>
+          <tr>
+            <td><code>details</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>If <code>true</code>, returns an object with <code>exists</code>, <code>status</code>, <code>url</code> instead of a boolean. <code>exists</code> follows <code>Response.ok</code> (good status range).</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="returns">
+      <h2>Return values</h2>
+      <h3>Default (<code>details</code> off or false)</h3>
+      <p><code>Promise&lt;boolean&gt;</code> — <code>true</code> if a response was received (any normal HTTP status). <code>false</code> for bad URLs, timeouts, missing <code>fetch</code>, or network failure.</p>
+      <h3>Detailed (<code>details: true</code>)</h3>
+      <p><code>Promise&lt;LinkCheckResult&gt;</code>:</p>
+      <pre class="code"><code>interface LinkCheckResult {
+  exists: boolean;  // same idea as response.ok
+  status: number;   // HTTP status, or 0 when there is no response
+  url: string;       // final response URL, or your URL string on failure
+}</code></pre>
+    </section>
+
+    <section id="behavior">
+      <h2>Behavior notes</h2>
+      <ul>
+        <li>Redirects are followed (same as <code>fetch</code> default).</li>
+        <li>With the default boolean mode, <code>true</code> means “we got a response”, not “status was 2xx”.</li>
+        <li>With <code>details: true</code>, <code>exists</code> is <code>true</code> only for successful status codes (<code>response.ok</code>).</li>
+      </ul>
+    </section>
+
+    <section id="examples-ts">
+      <h2>TypeScript examples</h2>
+      <p class="muted">Compile to JavaScript first (for example <code>tsc</code>), then run with Node. Below shows typical terminal output.</p>
+
+      <h3>Simple check</h3>
+      <pre class="code"><code>import { linkExists } from 'link-exists';
+
+const ok = await linkExists('https://example.com');
+console.log(ok);</code></pre>
+      <pre class="cli"><span class="p">$</span> <span class="c">node dist/app.js</span>
+<span class="o">true</span></pre>
+
+      <h3>Detailed result</h3>
+      <pre class="code"><code>import { linkExists } from 'link-exists';
+
+const info = await linkExists('https://example.com', { details: true });
+console.log(JSON.stringify(info, null, 2));</code></pre>
+      <pre class="cli"><span class="p">$</span> <span class="c">node dist/app.js</span>
+<span class="o">{
+  "exists": true,
+  "status": 200,
+  "url": "https://example.com/"
+}</span></pre>
+
+      <h3>Timeout and method</h3>
+      <pre class="code"><code>const ok = await linkExists('https://example.com', {
+  timeout: 5000,
+  method: 'GET',
+});
+console.log(ok);</code></pre>
+      <pre class="cli"><span class="p">$</span> <span class="c">node dist/app.js</span>
+<span class="o">true</span></pre>
+
+      <h3>No protocol in the string</h3>
+      <pre class="code"><code>const ok = await linkExists('example.com', { ignoreProtocol: true });
+console.log(ok);</code></pre>
+      <pre class="cli"><span class="p">$</span> <span class="c">node dist/app.js</span>
+<span class="o">true</span></pre>
+    </section>
+
+    <section id="examples-js">
+      <h2>JavaScript (CommonJS) examples</h2>
+
+      <h3>Require and run</h3>
+      <pre class="code"><code>const { linkExists } = require('link-exists');
+
+(async () => {
+  const ok = await linkExists('https://example.com');
+  console.log(ok);
+})();</code></pre>
+      <pre class="cli"><span class="p">$</span> <span class="c">node app.cjs</span>
+<span class="o">true</span></pre>
+
+      <h3>Failure in CLI (boolean mode)</h3>
+      <pre class="code"><code>const { linkExists } = require('link-exists');
+(async () => {
+  console.log(await linkExists('https://this-host-should-not-resolve.test/'));
+})();</code></pre>
+      <pre class="cli"><span class="p">$</span> <span class="c">node app.cjs</span>
+<span class="o">false</span></pre>
+
+      <h3>Detailed failure shape</h3>
+      <pre class="code"><code>const { linkExists } = require('link-exists');
+(async () => {
+  const r = await linkExists('not a real url .com', { details: true });
+  console.log(JSON.stringify(r));
+})();</code></pre>
+      <pre class="cli"><span class="p">$</span> <span class="c">node app.cjs</span>
+<span class="o">{"exists":false,"status":0,"url":"not a real url .com"}</span></pre>
+    </section>
+
+    <footer>
+      <p><a href="https://github.com/stackblogger/link-exists">GitHub</a> · <a href="https://www.npmjs.com/package/link-exists">npm</a></p>
+    </footer>
+  </main>
+</body>
+</html>
